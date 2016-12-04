@@ -22,8 +22,8 @@ for(let i = 0; i < NUM_POINTS; i++)
     xDelta: 0.9,
     yDelta: 1,
     color: 'orange', // the best color
-	image: image1 //Set the starting image 
-	
+	  image: image1 //Set the starting image
+
   });
 }
 
@@ -34,29 +34,30 @@ const draw = function()
   for (let i=0;i<NUM_POINTS;i++)
   {
     point=points[i];
-   
-	context.drawImage(point.image,point.x,point.y); //Draw the image from points array
+
+    //Draw the image from points array
+    context.drawImage(point.image,point.x,point.y);
 
     point.x+=point.xDelta;
     point.y+=point.yDelta;
 
-    if(point.x<=0 ||point.x>=canvas.width-point.width)
-	{
-      point.xDelta*=-1;
-	  
-		  if(point.image==image1)point.image=image2; //Switch the images when hitting edge
-		  else
-			  point.image=image1;
-	}
+      if(point.x<=0 ||point.x>=canvas.width-point.image.width)
+  	{
+        point.xDelta*=-1;
+  		  if(point.image==image1)
+            point.image=image2; //Switch the images when hitting edge
+  		    else
+            point.image=image1;
+  	}
 
-    if(point.y<=0 ||point.y>=canvas.height-point.height)
-	{
-      point.yDelta*=-1;
-	  
-		if(point.image==image1)point.image=image2; //Switch the images when hitting edge
-		else
-		  point.image=image1;
-	}
+      if(point.y<=0 ||point.y>=canvas.height-point.image.height)
+  	{
+        point.yDelta*=-1;
+        if(point.image==image1)
+            point.image=image2; //Switch the images when hitting edge
+          else
+            point.image=image1;
+  	}
   }
 
 };
